@@ -9,3 +9,4 @@
 - include:              '../tasks/system_groups.yml'
 - include:              '../tasks/system_users.yml'
 - include:              '../tasks/authorized_keys.yml'
+- include:              '../tasks/allow_users.yml'
