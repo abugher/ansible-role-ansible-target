@@ -5,6 +5,7 @@
   register:             install_python_result
   changed_when:         install_python_result.stdout.find('installed python') != -1
 - include:              '../tasks/install_packages.yml'
+- include:              '../tasks/apt_purge_packages.yml'
 - include:              '../tasks/lines_in_files.yml'
 - include:              '../tasks/system_groups.yml'
 - include:              '../tasks/system_users.yml'

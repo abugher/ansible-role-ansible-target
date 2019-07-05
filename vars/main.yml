@@ -2,6 +2,8 @@
 install_packages:
   - 'sudo'
   - 'acl'               # http://docs.ansible.com/ansible/latest/become.html#becoming-an-unprivileged-user
+apt_purge_packages:
+  - 'linux-stretch-root-next-bananapi'
 lines_in_files:
   - line:               '%ansible ALL=(ALL) NOPASSWD:ALL'
     regexp:             '^%ansible '
