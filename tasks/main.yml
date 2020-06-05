@@ -1,9 +1,16 @@
 ---
-- raw:                  if ! test -e /etc/python_is_installed.txt; then apt-get update -y && apt-get -y install python > /var/log/install_python.log 2>&1 && touch /etc/python_is_installed.txt && echo 'installed python' || echo 'failed to install python; see /var/log/install_python.log' >&2; fi
+- name:                 'install python'
+  raw:                  if ! test -e /etc/python_is_installed.txt; then apt-get update -y && apt-get -y install python > /var/log/install_python.log 2>&1 && touch /etc/python_is_installed.txt && echo 'installed python' || echo 'failed to install python; see /var/log/install_python.log' >&2; fi
   args:
     executable:         '/bin/bash'
   register:             install_python_result
   changed_when:         install_python_result.stdout.find('installed python') != -1
+- name:                 'update package lists'
+  raw:                  aptitude update > /var/log/deployment_apt_update.log >&2
+  args:
+    executable:         '/bin/bash'
+  register:             update_result
+  changed_when:         False
 - include:              '../tasks/install_packages.yml'
 - include:              '../tasks/apt_purge_packages.yml'
 - include:              '../tasks/lines_in_files.yml'
