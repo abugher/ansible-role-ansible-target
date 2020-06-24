@@ -6,7 +6,7 @@
   register:             install_python_result
   changed_when:         install_python_result.stdout.find('installed python') != -1
 - name:                 'update package lists'
-  raw:                  aptitude update > /var/log/deployment_apt_update.log >&2
+  raw:                  apt-get update > /var/log/deployment_apt_update.log >&2
   args:
     executable:         '/bin/bash'
   register:             update_result
