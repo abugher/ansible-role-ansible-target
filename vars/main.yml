@@ -20,11 +20,6 @@ lines_in_files:
     regexp:             '^ansible:[^:*][^:]*:(.*)$'
     dest:               '/etc/shadow'
     backrefs:           'yes'
-authorized_keys:
-  - user:               'ansible'
-    keyfile:            "{{ role_path }}/../../inventory/hosts/synapse/users/ansible/files/ssh_keys/id_rsa.pub"
-  - user:               'ansible'
-    keyfile:            "{{ role_path }}/../../inventory/hosts/mawg/users/aaron/files/ssh_keys/id_rsa.pub"
 allow_users:
   - 'ansible'
 restart_services:
