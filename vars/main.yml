@@ -13,7 +13,7 @@ install_files:
     dest:               '/etc/sudoers.d/ansible'
 system_groups:
   - 'ansible'
-system_users:
+system_users_unlocked:
   - 'ansible'
 lines_in_files:
   - line:               'ansible:*:\1'

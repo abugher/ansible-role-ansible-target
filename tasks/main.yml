@@ -12,10 +12,9 @@
   register:             update_result
   changed_when:         False
 - include:              '../tasks/install_packages.yml'
-#- include:              '../tasks/apt_purge_packages.yml'
 - include:              '../tasks/install_files.yml'
 - include:              '../tasks/system_groups.yml'
-- include:              '../tasks/system_users.yml'
+- include:              '../tasks/system_users_unlocked.yml'
 - include:              '../tasks/lines_in_files.yml'
 - include:              '../tasks/authorized_keys.yml'
   vars:
