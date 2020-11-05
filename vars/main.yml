@@ -9,6 +9,14 @@ install_files:
     mode:               '0440'
     src:                'files/sudoers.d/ansible'
     dest:               '/etc/sudoers.d/ansible'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    src:                "files/conf/policy-rc.d"
+    dest:               '/usr/sbin/policy-rc.d'
+remove_files:
+  - '/etc/apt/sources.list.d/collabora.list'
+  - '/etc/apt/sources.list.d/wolfram.list'
 system_groups:
   - 'ansible'
 system_users_unlocked:
