@@ -1,4 +1,5 @@
 ---
 dependencies:
-  - role:       'sshd'
-    when:       skipdeps is not defined
+# This would be good, but deployment won't work until ansible_target has been applied.
+#  - role:       'sshd'
+#    when:       skipdeps is not defined
