@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role:       'sshd'
+    when:       skipdeps is not defined
