@@ -1,16 +1,12 @@
 ---
+# Resist the temptation to update package lists.  This role must run before
+# platform_roles are applied, so package source lists might not yet be valid.
 - name:                 'install python'
-  raw:                  if ! dpkg-query --list | awk '{print $2}' | grep -q '^python3$'; then apt-get update -y && apt-get -y install python3 > /var/log/install_python.log 2>&1 && echo 'installed python' || echo 'failed to install python; see /var/log/install_python.log' >&2; fi
+  raw:                  if ! dpkg-query --list | awk '{print $2}' | grep -q '^python3$'; then apt-get -y install python3 > /var/log/install_python.log 2>&1 && echo 'installed python' || echo 'failed to install python; see /var/log/install_python.log' >&2; fi
   args:
     executable:         '/bin/bash'
   register:             install_python_result
   changed_when:         install_python_result.stdout.find('installed python') != -1
-- name:                 'update package lists'
-  raw:                  apt-get update > /var/log/deployment_apt_update.log >&2
-  args:
-    executable:         '/bin/bash'
-  register:             update_result
-  changed_when:         False
 - include:              '../tasks/install_packages.yml'
 - include:              '../tasks/install_files.yml'
 - include:              '../tasks/remove_files.yml'
