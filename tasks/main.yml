@@ -21,10 +21,12 @@
   with_items:           "{{ groups['ansible_master_extended'] }}"
   loop_control:
     loop_var:           'ansible_master_host'
+- include:              '../tasks/allow_users.yml'
+# Check whether an ssh service exists.  This facilitates deployment to
+# localhost.
 - command:              service ssh status
   register:             service_ssh_status_result
   failed_when:          False
-- include:              '../tasks/allow_users.yml'
 - include:              '../tasks/restart_services.yml'
   when:                 service_ssh_status_result.rc == 0
                         and ( 
