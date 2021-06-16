@@ -21,7 +21,13 @@
   with_items:           "{{ groups['ansible_master_extended'] }}"
   loop_control:
     loop_var:           'ansible_master_host'
+- command:              service ssh status
+  register:             service_ssh_status_result
+  failed_when:          False
 - include:              '../tasks/allow_users.yml'
 - include:              '../tasks/restart_services.yml'
-  when:                 allow_users_result.changed
-                        or authorized_keys_result.changed
+  when:                 service_ssh_status_result.rc == 0
+                        and ( 
+                          allow_users_result.changed
+                          or authorized_keys_result.changed
+                        )
