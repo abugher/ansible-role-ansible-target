@@ -27,6 +27,7 @@
 - command:              service ssh status
   register:             service_ssh_status_result
   failed_when:          False
+  changed_when:         False
 - include:              '../tasks/restart_services.yml'
   when:                 service_ssh_status_result.rc == 0
                         and ( 
