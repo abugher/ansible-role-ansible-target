@@ -1,5 +1,4 @@
 ---
-- include:              '../tasks/dependencies.yml'
 # Resist the temptation to update package lists.  This role must run before
 # platform_roles are applied, so package source lists might not yet be valid.
 - name:                 'install python'

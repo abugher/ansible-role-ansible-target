@@ -1,6 +1,4 @@
 ---
-dependencies:
-  - role:
 install_packages:
   - 'sudo'
   - 'acl'               # http://docs.ansible.com/ansible/latest/become.html#becoming-an-unprivileged-user
