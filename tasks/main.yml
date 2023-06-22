@@ -18,7 +18,7 @@
     authorized_keys:
       - user:           'ansible'
         keyfile:        "{{ role_path }}/../../inventory/hosts/{{ ansible_master_host }}/users/{{ hostvars[ansible_master_host]['ansible_master_user']  | default('ansible') }}/files/ssh_keys/id_rsa.pub"
-  with_items:           "{{ groups['ansible_master_extended'] }}"
+  with_items:           "{{ groups['ansible-master-extended'] }}"
   loop_control:
     loop_var:           'ansible_master_host'
 - include:              '../tasks/allow_users.yml'
