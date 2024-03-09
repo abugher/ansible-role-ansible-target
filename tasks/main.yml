@@ -7,13 +7,13 @@
     executable:         '/bin/bash'
   register:             install_python_result
   changed_when:         install_python_result.stdout.find('installed python') != -1
-- include:              '../tasks/install_packages.yml'
-- include:              '../tasks/install_files.yml'
-- include:              '../tasks/remove_files.yml'
-- include:              '../tasks/system_groups.yml'
-- include:              '../tasks/system_users_unlocked.yml'
-- include:              '../tasks/lines_in_files.yml'
-- include:              '../tasks/authorized_keys.yml'
+- include_tasks:        '../tasks/install_packages.yml'
+- include_tasks:        '../tasks/install_files.yml'
+- include_tasks:        '../tasks/remove_files.yml'
+- include_tasks:        '../tasks/system_groups.yml'
+- include_tasks:        '../tasks/system_users_unlocked.yml'
+- include_tasks:        '../tasks/lines_in_files.yml'
+- include_tasks:        '../tasks/authorized_keys.yml'
   vars:
     authorized_keys:
       - user:           'ansible'
@@ -23,14 +23,14 @@
     - "{{ groups['ansible-master'] }}"
   loop_control:
     loop_var:           'ansible_master_host'
-- include:              '../tasks/allow_users.yml'
+- include_tasks:        '../tasks/allow_users.yml'
 # Check whether an ssh service exists.  This facilitates deployment to
 # localhost.
 - command:              service ssh status
   register:             service_ssh_status_result
   failed_when:          False
   changed_when:         False
-- include:              '../tasks/restart_services.yml'
+- include_tasks:        '../tasks/restart_services.yml'
   when:                 service_ssh_status_result.rc == 0
                         and ( 
                           allow_users_result.changed
