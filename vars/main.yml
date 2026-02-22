@@ -2,7 +2,7 @@
 install_packages:
   - 'sudo'
   - 'acl'               # http://docs.ansible.com/ansible/latest/become.html#becoming-an-unprivileged-user
-  - 'rsync'             # synchronize module (in tasks/sync_dirs.yml) depends on this.
+  - 'rsync'             # synchronize module (sync_dirs.yml) depends on this.
 install_files:
   - owner:              'root'
     group:              'root'
