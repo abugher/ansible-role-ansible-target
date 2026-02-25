@@ -17,7 +17,7 @@
   vars:
     authorized_keys:
       - user:           'ansible'
-        keyfile:        "inventory/hosts/{{ ansible_master_host }}/users/{{ hostvars[ansible_master_host]['ansible_master_user']  | default('ansible') }}/files/ssh_keys/id_rsa.pub"
+        keyfile:        "{{ inventory_path }}/hosts/{{ ansible_master_host }}/users/{{ hostvars[ansible_master_host]['ansible_master_user']  | default('ansible') }}/files/ssh_keys/id_rsa.pub"
   with_items:           
     - "{{ groups['ansible-master-extended'] }}"
     - "{{ groups['ansible-master'] }}"
