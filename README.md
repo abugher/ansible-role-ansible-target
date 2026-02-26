@@ -1,6 +1,6 @@
-Ansible Role:  ansible\_target
+Ansible Role:  ansible-target
 
-  ./bin/deploy\_role\_as\_user\_to\_hosts ansible\_target root <hostname>
+  deploy-role-as-user-to-hosts ansible-target root <hostname>
 
 This role configured credentials and privilege escalation to control the target
 host easily through ansible.  Initial deployment of this role requires
